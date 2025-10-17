@@ -8,7 +8,7 @@ public  class UserDao {
     private ConnectionMaker connectionMaker;
 
     public UserDao(ConnectionMaker c) {
-        this.connectionMaker = new NConnectionMaker();
+        this.connectionMaker = c;
     }
 
     // 2번째 추상메서드 를 할용하여 확장
