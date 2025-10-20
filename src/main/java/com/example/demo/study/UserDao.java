@@ -2,7 +2,7 @@ package com.example.demo.study;
 
 import java.sql.*;
 
-public  class UserDao {
+public /*abstract*/ class UserDao {
 
     // 3번째 상속이라는 제약에서 벗어나 다른방식으로 확장
     private ConnectionMaker connectionMaker;

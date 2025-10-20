@@ -1,11 +1,14 @@
-//package com.example.demo.study;
+//package com.example.demo.study.abstractAdd;
+//
+//import com.example.demo.study.UserDao;
 //
 //import java.sql.Connection;
 //import java.sql.DriverManager;
 //
 //public class NUserDao extends UserDao {
 //
- // UserDao 추상메서드를 주석처리 하여 소스 주석처리
+//
+//    //UserDao 추상메서드를 주석처리 하여 소스 주석처리
 //    @Override
 //    public Connection getConnection() throws Exception {
 //        Class.forName("org.h2.Driver");
