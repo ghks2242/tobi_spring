@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DaoFactory {
 
-//    @Bean
-//    public UserDao userDao() {
-//        UserDao userDao = new UserDao(connectionMaker());
-//        return userDao;
-//    }
+    @Bean
+    public UserDao userDao() {
+        UserDao userDao = new UserDao(connectionMaker());
+        return userDao;
+    }
 
 //    public AcountDao acountDao() {
 //        AcountDao acountDao = new AcountDao(connectionMaker());
@@ -26,9 +26,9 @@ public class DaoFactory {
 //        return messageDao;
 //    }
 
-//    @Bean
-//    public ConnectionMaker connectionMaker() {
-//        return new NConnectionMaker();
-//    }
+    @Bean
+    public ConnectionMaker connectionMaker() {
+        return new NConnectionMaker();
+    }
 
 }
