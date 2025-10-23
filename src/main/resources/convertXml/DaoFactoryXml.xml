@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!--
+    @Bean
+    public ConnectionMaker connectionMaker() {
+        return new NConnectionMaker();
+    }
+    -->
+    <!-- class 는 리턴타입을 명시 -->
+    <bean id="connectionMaker" class="com.example.demo.study.NConnectionMaker">
+    </bean>
+
+    <!--
+    @Bean
+    public UserDao userDao() {
+        UserDao userDao = new UserDao();
+        userDao.setConnectionMaker(connectionMaker());
+        return userDao;
+    }
+    -->
+    <!-- 다른 빈을 주입하려면 ref 을 사용해야한다. -->
+    <bean id="userDao" class="com.example.demo.study.UserDao">
+        <!--
+        setConnectionMaker 에서
+        set = property
+        ConnectionMaker = name="connectionMaker"
+        connectionMaker() = ref="connectionMaker"
+        으로 해석하면된다
+        -->
+        <property name="connectionMaker" ref="connectionMaker"/>
+        <!--
+        위는 set 메서드를 사용해서 하지만
+        생성자로 대응하려면 constructor-arg
+            ex) <constructor-arg ref="connectionMaker"/> 로 하면된다
+        -->
+    </bean>
+</beans>

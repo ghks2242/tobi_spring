@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+
+    <!--
+    @Bean
+    public UserDaoData userDao() {
+        UserDaoData userDao = new UserDaoData();
+        userDao.setDataSource(dataSource());
+        return userDao;
+    }
+    -->
+    <bean id="userDao" class=" com.example.demo.study.datasource.UserDaoData">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!--
+    @Bean
+    public DataSource dataSource() {
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriverClass(org.h2.Driver.class);
+        dataSource.setUrl("jdbc:h2:tcp://localhost/~/tobi");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+        return dataSource;
+    }
+    -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <!--
+        값을 넣을떄는 value 로 넣으면된다.
+        -->
+        <property name="driverClass" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:tcp://localhost/~/tobi"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
+</beans>

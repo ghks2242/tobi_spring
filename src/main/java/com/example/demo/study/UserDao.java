@@ -7,9 +7,20 @@ public /*abstract*/ class UserDao {
     // 3번째 상속이라는 제약에서 벗어나 다른방식으로 확장
     private ConnectionMaker connectionMaker;
 
+    // p127 생성자 제거 메소드 방식의 DI 로 변경
+    // 기존생성자로 DI 하는건 주석처리안했음 일부러
     public UserDao(ConnectionMaker c) {
         this.connectionMaker = c;
     }
+
+    public UserDao() {
+
+    }
+
+    public void setConnectionMaker(ConnectionMaker c) {
+        this.connectionMaker = c;
+    }
+    //
 
     // 2번째 추상메서드 를 할용하여 확장
 //    public abstract Connection getConnection() throws Exception;

@@ -12,7 +12,10 @@ public class DaoFactory {
 
     @Bean
     public UserDao userDao() {
-        UserDao userDao = new UserDao(connectionMaker());
+        // p127 UserDao 가 생성자로 DI 하는방식에서 메소드로 DI 하는방식으로 변경해보자
+//        UserDao userDao = new UserDao(connectionMaker());
+        UserDao userDao = new UserDao();
+        userDao.setConnectionMaker(connectionMaker());
         return userDao;
     }
 
