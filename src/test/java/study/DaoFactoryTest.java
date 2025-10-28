@@ -2,6 +2,7 @@ package study;
 
 import com.example.demo.study.DaoFactory;
 import com.example.demo.study.UserDao;
+import org.assertj.core.api.Assertions;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

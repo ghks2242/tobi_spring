@@ -21,11 +21,18 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     implementation 'com.h2database:h2:2.2.224'
     implementation group: 'org.springframework', name: 'spring-jdbc', version: '5.2.0.RELEASE'
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+
+}
+
+test {
+    useJUnitPlatform()  // JUnit5 플랫폼으로 실행
 }
 
 tasks.named('test') {

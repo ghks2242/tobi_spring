@@ -1,8 +1,7 @@
-package com.example.demo.study.datasource;
+package com.example.demo.study.datasource.convertXml;
 
 import com.example.demo.study.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.example.demo.study.datasource.UserDaoData;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class UserTestDataXml {
@@ -10,7 +9,7 @@ public class UserTestDataXml {
     public static void main(String[] args) throws Exception {
 
 
-        GenericXmlApplicationContext context = new GenericXmlApplicationContext("datasource/dataSource.xml");
+        GenericXmlApplicationContext context = new GenericXmlApplicationContext("datasource/convertXml/dataSource.xml");
         UserDaoData dao = context.getBean("userDao", UserDaoData.class);
 //
 
