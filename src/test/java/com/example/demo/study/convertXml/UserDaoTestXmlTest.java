@@ -2,6 +2,7 @@ package com.example.demo.study.convertXml;
 
 import com.example.demo.study.User;
 import com.example.demo.study.UserDao;
+import com.example.demo.study.datasource.UserDaoData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.datasource.SingleConnectionDataSource;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import javax.sql.DataSource;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
@@ -36,12 +41,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 * @SpringBootTest 안에는 이미
 * @ExtendWith(SpringExtension.class) + @ContextConfiguration 기능이 포함되어 있습니다.
 * */
-@ContextConfiguration(locations = "classpath:convertXml/DaoFactoryXml.xml") // 설정 파일 지정
+@ContextConfiguration(locations = "classpath:datasource/convertXml/test-dataSource.xml") // 설정 파일 지정
 @ExtendWith(SpringExtension.class) // 스프링 테스트 실행기 등록
+//@DirtiesContext // 테스트메소드에서 애플리케이션 컨택스트의 구성이나 상태를 변경한다는것을 테스트 컨택스트 프레임워크에 알려준다.
 public class UserDaoTestXmlTest {
 
     @Autowired
-    private ApplicationContext context;
+    private ApplicationContext context; // 테스트 오브젝트가 만들어지고 나면 스프링 테스트 컨텍스트에 의해 자동으로 값이 주입된다
 
     /*
      * class 변수 -> 인스턴스변수
@@ -49,7 +55,7 @@ public class UserDaoTestXmlTest {
      * 메소드안의 변수 -> 지역변수
      * */
     @Autowired
-    private UserDao dao;    // setUp 메소드에서 만드는 객체를 테스트 메소드에서 사용할수있게 인스턴스변수로 추가
+    private UserDaoData dao;    // setUp 메소드에서 만드는 객체를 테스트 메소드에서 사용할수있게 인스턴스변수로 추가
 
     private User user1;
     private User user2;
@@ -63,10 +69,18 @@ public class UserDaoTestXmlTest {
 //        this.dao = context.getBean("userDao", UserDao.class);
 //       세번쨰로 위의 소스는 매 테스트마다 애플리케이션콘택스트가 만들어진다 이걸 어노테이션으로 정리해보겟다.
 
+        // 테스트에서 사용할 dataSource 오브젝트를 직접생성
+//        DataSource dataSource = new SingleConnectionDataSource("jdbc:h2:tcp://localhost/~/tobi","sa","",true);
+//        dao.setDataSource(dataSource);
+
 //      두번째로 user 데이터 생성하는부분도 추출하였다.
         this.user1 = new User("gyumee", "박상철", "springno1");
         this.user2 = new User("leegw700", "이길원", "springno2");
         this.user3 = new User("bumjin", "박범진", "springno3");
+
+        System.out.println(this.context);
+        System.out.println(this);
+
     }
 
 

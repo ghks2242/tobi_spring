@@ -35,7 +35,7 @@
         값을 넣을떄는 value 로 넣으면된다.
         -->
         <property name="driverClass" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:tcp://localhost/~/tobi"/>
+        <property name="url" value="jdbc:h2:tcp://localhost/~/tobitest"/>
         <property name="username" value="sa"/>
         <property name="password" value=""/>
 
